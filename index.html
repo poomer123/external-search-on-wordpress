@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>External Search On Wordpress Site</title>
+	<script src="jquery-1.12.4.min.js"></script>
+</head>
+<body>
+	<h1>External Search On Wordpress Site</h1>
+
+	<input type="search" id="search-text">
+	<input type="button" id="search-submit" value="Search">
+
+	
+</body>
+</html>
+
+<script>
+	
+	$(document).ready(function($) {
+		// open new window when click the button and go to the website with GET
+		$("#search-submit").click(function(){
+			var str = $("#search-text").val();
+			window.open("https://www.smartmatching.co.th/?s="+str);
+		});
+
+		// when press Enter key in text box, it's will be click the button
+		$("#search-text").keyup(function(event) {
+			if(event.keyCode === 13) {
+				$("#search-submit").click();
+			}
+		});
+
+	});
+
+</script>	
