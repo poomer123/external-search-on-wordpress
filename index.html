@@ -8,10 +8,13 @@
 <body>
 	<h1>External Search On Wordpress Site</h1>
 
-	<input type="search" id="search-text">
-	<input type="button" id="search-submit" value="Search">
+	<h3>Search 1</h3>
+	<input type="search" id="search-text-1">
+	<input type="button" id="search-submit-1" value="Search 1">
 
-	
+	<h3>Search 2</h3>
+	<input type="search" id="search-text-2" onkeypress="checkEnterKey(event)">
+	<input type="button" id="search-submit-2" onClick="externalSearch()" value="Search 2">
 </body>
 </html>
 
@@ -19,18 +22,31 @@
 	
 	$(document).ready(function($) {
 		// open new window when click the button and go to the website with GET
-		$("#search-submit").click(function(){
-			var str = $("#search-text").val();
+		$("#search-submit-1").click(function(){
+			var str = $("#search-text-1").val();
 			window.open("https://www.smartmatching.co.th/?s="+str);
 		});
 
 		// when press Enter key in text box, it's will be click the button
-		$("#search-text").keyup(function(event) {
+		$("#search-text-1").keyup(function(event) {
 			if(event.keyCode === 13) {
-				$("#search-submit").click();
+				$("#search-submit-1").click();
 			}
 		});
-
 	});
+
+
+	// check Enter Key press
+	function checkEnterKey(event) {
+		if(event.keyCode === 13){
+			externalSearch();
+		}
+	}
+
+	// open new window and go to the website with GET
+	function externalSearch() {
+		var str = document.getElementById("search-text-2").value;
+		window.open("https://www.smartmatching.co.th/?s="+str);
+	}
 
 </script>	
